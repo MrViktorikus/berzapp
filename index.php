@@ -7,15 +7,37 @@
     <body>
         <?php
         include "db.php";
+
+
+
+
+        $sql = "SELECT * FROM nyhet";
+        $stmt = $dbm->prepare($sql);
+        $stmt->bindParam(":flode", $flode);
+        $stmt->execute();
+        $infos = $stmt->fetchAll();
+
+        $flode = filter_input(INPUT_GET, 'flode', FILTER_SANITIZE_SPECIAL_CHARS);
+
+
+        $asd = array("hej", "Nej", "Tjej", "Gay");
+        var_dump($asd);
+
+
+        foreach ($infos as $info) {
+
+            echo $info["flode"] . "<br>";
+//                header("Location: index.php");
+        }
         if (isset($_GET["action"])) {
             if ($_GET["action"] == "add") {
-                $add = "INSERT INTO flode (nyhet) VALUES ('" . $_GET["input"] . "')";
+                $add = "INSERT INTO nyhet (flode) VALUES ('" . $_GET["input"] . "')";
                 $stmt = $dbm->prepare($add);
                 $stmt->execute();
 //                var_dump($add);
             }
-            if ($_POST["action"] == "delete") {
-                $delete = "DELETE FROM flode WHERE id='" . $product["id"] . "'";
+            if ($_GET["action"] == "delete") {
+                $delete = "DELETE FROM nyhet WHERE id='" . $info["id"] . "'";
                 $stmt = $dbm->prepare($delete);
                 $stmt->execute();
             }
@@ -24,28 +46,25 @@
         }
 
 
+        echo "<form method='GET'>";
+        echo "<textarea name='input' required></textarea>";
+        echo "<br>";
+        echo "<input type='submit' name='action' value='add'>";
+        echo "<br><br>";
+        echo "</form>";
+        echo "<form id='delete' method='GET'>";
+        echo "<input type='text' placeholder='lol' name='id'>";
+        echo "<br>";
+        echo "<input type='submit' name='action' value='delete'>";
+        echo "</form>";
 
-        $sql = "SELECT * FROM flode";
-        $stmt = $dbm->prepare($sql);
-        $stmt->bindParam(":nyhet", $nyhet);
-        $stmt->execute();
-        $infos = $stmt->fetchAll();
+        for ($i = 0; $i < count($asd); $i++) {
+            echo date(" ".'Y-m-d H:i');
+            echo "<br>";
+            echo $asd[$i];
 
-        $nyhet = filter_input(INPUT_GET, 'nyhet', FILTER_SANITIZE_SPECIAL_CHARS);
-
-        foreach ($infos as $info) {
-            foreach ($info as $i) {
-                echo $i . "<br>";
-//                header("Location: index.php");
-            }
+            echo "<br><br>";
         }
-
-
-        echo "<form method='GET'>
-        <textarea name='input' required></textarea>
-        <br>
-        <input type='submit' name='action' value='add'>
-        </form>";
         ?>
     </body>
 </html>
