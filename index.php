@@ -20,7 +20,7 @@
         $flode = filter_input(INPUT_GET, 'flode', FILTER_SANITIZE_SPECIAL_CHARS);
 
 
-        $asd = array("hej", "Nej", "Tjej", "Gay");
+        $asd = array();
         var_dump($asd);
 
 
@@ -29,12 +29,15 @@
             echo $info["flode"] . "<br>";
 //                header("Location: index.php");
         }
+             
         if (isset($_GET["action"])) {
             if ($_GET["action"] == "add") {
                 $add = "INSERT INTO nyhet (flode) VALUES ('" . $_GET["input"] . "')";
                 $stmt = $dbm->prepare($add);
                 $stmt->execute();
-//                var_dump($add);
+//                $addflode = $_GET["input"];
+//                $asd[] = array($addflode);
+//                var_dump($asd);
             }
             if ($_GET["action"] == "delete") {
                 $delete = "DELETE FROM nyhet WHERE id='" . $info["id"] . "'";
@@ -44,9 +47,12 @@
         } else {
             
         }
+        var_dump($asd);
 
 
         echo "<form method='GET'>";
+        echo "<input type='text' placeholder='rubrik' name='rubrik'";
+        echo "<br>";
         echo "<textarea name='input' required></textarea>";
         echo "<br>";
         echo "<input type='submit' name='action' value='add'>";
@@ -59,7 +65,7 @@
         echo "</form>";
 
         for ($i = 0; $i < count($asd); $i++) {
-            echo date(" ".'Y-m-d H:i');
+            echo date(" " . 'Y-m-d H:i');
             echo "<br>";
             echo $asd[$i];
 
