@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Värd: 127.0.0.1
--- Tid vid skapande: 22 jan 2015 kl 14:50
+-- Tid vid skapande: 23 jan 2015 kl 14:50
 -- Serverversion: 5.6.20
 -- PHP-version: 5.5.15
 
@@ -29,23 +29,16 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `nyhet` (
 `id` int(11) NOT NULL,
   `flode` varchar(999) NOT NULL,
-  `datum` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `rubrik` varchar(35) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=100 ;
+  `rubrik` varchar(35) NOT NULL,
+  `tid` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumpning av Data i tabell `nyhet`
 --
 
-INSERT INTO `nyhet` (`id`, `flode`, `datum`, `rubrik`) VALUES
-(79, 'ASD', '2015-01-22 14:42:38', ''),
-(80, 'ASD', '2015-01-22 14:42:38', ''),
-(81, 'ASD', '2015-01-22 14:42:38', ''),
-(82, 'ASD', '2015-01-22 14:42:38', ''),
-(83, 'ASD', '2015-01-22 14:42:38', ''),
-(84, 'FDGAGFDSAGHFDA', '2015-01-22 14:42:38', ''),
-(85, 'ASDF', '2015-01-22 14:42:38', ''),
-(86, 'ASFD', '2015-01-22 14:42:38', '');
+INSERT INTO `nyhet` (`id`, `flode`, `rubrik`, `tid`) VALUES
+(18, 'fdsbfsjfbsdjksdbfk', 'dSDLDSNALKD', '2015-01-23 13:47:20');
 
 --
 -- Index för dumpade tabeller
@@ -65,7 +58,7 @@ ALTER TABLE `nyhet`
 -- AUTO_INCREMENT för tabell `nyhet`
 --
 ALTER TABLE `nyhet`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=100;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
