@@ -51,7 +51,7 @@
                 header("Location: index.php");
             }
             if ($_GET["action"] == "edit") {
-                $edit = "UPDATE products SET rubrik='" . $_GET["rubrik"] . "', flode='" . $_GET["flode"] . "' WHERE id=" . $_GET["id"];
+                $edit = "UPDATE nyhet SET flode='" . $_GET["input"] . "', rubrik='" . $_GET["rubrik"] . "' WHERE id='" . $_GET["id"] . "'";
                 $stmt = $dbm->prepare($edit);
                 $stmt->execute();
                 header("Location: index.php");
@@ -60,27 +60,13 @@
         } else {
             
         }
-        var_dump($asd);
+       
 
-//        $target_dir = "img/";
-//        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-//        $uploadOk = 1;
-//        $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
-// Check if image file is a actual image or fake image
-//        if (isset($_GET["action"])) {
-//            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-//            if ($check !== false) {
-//                echo "File is an image - " . $check["mime"] . ".";
-//                $uploadOk = 1;
-//            } else {
-//                echo "File is not an image.";
-//                $uploadOk = 0;
-//            }
-//        }
+     
 
 
         echo "<form method='GET'>";
-        echo "<input type='text' placeholder='rubrik' value='" . $info['rubrik'] . "' name='rubrik'";
+        echo "<input type='text' placeholder='rubrik' name='rubrik'";
         echo "<br><br>";
         echo "<textarea name='input' required></textarea>";
         echo "<br>";
@@ -92,7 +78,13 @@
 //        echo "<input name='action' value='addFile' type='submit'>";
 //        echo "</form>";
         echo "<br>" . "<a href='index.php'>Uppdatera Resultat</a>";
+    
         ?>
         <img src="img/bild.jpg" alt="Spa" width="150">
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+            Select image to upload:
+            <input type="file" name="fileToUpload" id="fileToUpload">
+            <input type="submit" value="Upload Image" name="submit">
+        </form>
     </body>
 </html>
