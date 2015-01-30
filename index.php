@@ -34,22 +34,14 @@
         }
 
         if (isset($_GET["action"])) {
-            if ($_GET["action"] == "add") {
-                $add = "INSERT INTO nyhet (flode, rubrik) VALUES ('" . $_GET["input"] . "','" . $_GET["rubrik"] . "')";
-                $stmt = $dbm->prepare($add);
-                $stmt->execute();
-//                var_dump($_GET["fileToUpload"]);
-//                header("Location: index.php");
-            }
+            
             if ($_GET["action"] == "delete") {
                 $delete = "DELETE FROM nyhet WHERE id='" . $_GET["id"] . "'";
                 $stmt = $dbm->prepare($delete);
                 $stmt->execute();
                 header("Location: index.php");
             }
-        } else {
-            
-        }
+        } 
 
 
 
