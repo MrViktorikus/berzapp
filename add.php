@@ -1,27 +1,43 @@
-<?php
+<?php ?>
 
-include "db.php";
+<!DOCTYPE html>
 
-$sql = "SELECT * FROM nyhet";
-$stmt = $dbm->prepare($sql);
-$stmt->bindParam(":flode", $flode);
-$stmt->execute();
-$infos = $stmt->fetchAll();
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+        <div>TODO write content</div>
 
-if (isset($_GET["action"])) {
-    if ($_GET["action"] == "add") {
-        $add = "INSERT INTO nyhet (flode, rubrik) VALUES ('" . $_GET["input"] . "','" . $_GET["rubrik"] . "')";
-        $stmt = $dbm->prepare($add);
-        $stmt->execute();
-        header("Location: index.php");
-    }
-}
-echo "<form method='GET'>";
-echo "<input type='text' placeholder='rubrik' name='rubrik'";
-echo "<br><br>";
-echo "<textarea name='input' required></textarea>";
-echo "<br>";
-echo "<input type='submit' name='action' value='add'>";
-echo "</form>";
-?>
+        <form method='GET' action="addAction.php">
+            <input type='text' placeholder='rubrik' name='rubrik'>
+            <br><br>
+            <textarea name='input' required></textarea>
+            <br>
+            <input type='submit' name='action' value='add'>
+        </form>
+
+        <div id="upload-wrapper">
+            <div align="center">
+                <h3>Ajax File Uploader</h3>
+                <form action="processupload.php" method="post" enctype="multipart/form-data" id="MyUploadForm">
+                    <input name="FileInput" id="FileInput" type="file" />
+                    <input type="submit"  id="submit-btn" value="Upload" />
+                    <img src="images/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
+
+                </form>
+                <div id="progressbox" ><div id="progressbar"></div ><div id="statustxt">0%</div></div>
+                <div id="filnamn"></div>
+            </div>
+        </div>
+
+
+        <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.form.min.js"></script>
+        <script src="uploadfile.js"></script>
+    </body>
+</html>
+
 
