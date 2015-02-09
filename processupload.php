@@ -48,11 +48,11 @@ if (isset($_FILES["FileInput"]) && $_FILES["FileInput"]["error"] == UPLOAD_ERR_O
 
     if (move_uploaded_file($_FILES['FileInput']['tmp_name'], $UploadDirectory . $NewFileName)) {
         
-        if(isset($_GET["action"])){
-            if($_GET["action"] == "Ladda Upp"){
-                $laggtilfil = "INSERT INTO nyhet (filnamn) VALUES ('" . $_GET["filnamn"] . "')";
-            }
-        }
+//        if(isset($_GET["action"])){
+//            if($_GET["action"] == "Ladda Upp"){
+//                $laggtilfil = "INSERT INTO nyhet (filnamn) VALUES ('" . $ . "')";
+//            }
+//        }
         
         echo "<form method='GET'>";
         echo "<input type='text' name='filnamn' value='" . $NewFileName . "'>";

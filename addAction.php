@@ -1,4 +1,5 @@
 <?php
+
 include "db.php";
 
 $sql = "SELECT * FROM nyhet";
@@ -9,7 +10,7 @@ $infos = $stmt->fetchAll();
 
 if (isset($_GET["action"])) {
     if ($_GET["action"] == "add") {
-        $add = "INSERT INTO nyhet (flode, rubrik) VALUES ('" . $_GET["input"] . "','" . $_GET["rubrik"] . "')";
+        $add = "INSERT INTO nyhet (flode, rubrik, filnamn) VALUES ('" . $_GET["input"] . "','" . $_GET["rubrik"] . "', '" . $_GET["filnamn"] . "')";
         $stmt = $dbm->prepare($add);
         $stmt->execute();
         header("Location: index.php");

@@ -7,7 +7,7 @@
     <body>
         <?php
         include "db.php";
-        
+
 
         $sql = "SELECT * FROM nyhet";
         $stmt = $dbm->prepare($sql);
@@ -19,6 +19,8 @@
 
         foreach ($infos as $info) {
             echo $info["rubrik"] . "<br>";
+//            echo $info["filnamn"] . "<br>";
+            echo "<img src='img/" . $info["filnamn"] . "' alt='Spa' width='100'>" . "<br>x";
             echo $info["flode"] . "<br>";
             echo $info["tid"] . "<br>";
 //            echo $info["filnamn"] . "<br>";
@@ -34,14 +36,14 @@
         }
 
         if (isset($_GET["action"])) {
-            
+
             if ($_GET["action"] == "delete") {
                 $delete = "DELETE FROM nyhet WHERE id='" . $_GET["id"] . "'";
                 $stmt = $dbm->prepare($delete);
                 $stmt->execute();
                 header("Location: index.php");
             }
-        } 
+        }
 
 
 
@@ -60,11 +62,11 @@
         echo "<br>" . "<a href='index.php'>Uppdatera Resultat</a>";
         echo "<br>" . "<a href='add.php'>Lägg till nyhet</a>";
         ?>
-<!--        <img src="img/bild.jpg" alt="Spa" width="150">-->
+
         <!--<form action="upload.php" method="post" enctype="multipart/form-data">-->
-            <!--Select image to upload:-->
-            <!--<input type="file" name="fileToUpload" id="fileToUpload">-->
-            <!--<input type="submit" value="Upload Image" name="submit">-->
+        <!--Select image to upload:-->
+        <!--<input type="file" name="fileToUpload" id="fileToUpload">-->
+        <!--<input type="submit" value="Upload Image" name="submit">-->
         <!--</form>-->
     </body>
 </html>

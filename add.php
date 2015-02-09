@@ -17,21 +17,22 @@
             <textarea name='input' required></textarea>
             <br>
             <input type='submit' name='action' value='add'>
+            <input type='hidden' name='filnamn' value='' id='filnamn'>
         </form>
+        <!--
+                <div id="upload-wrapper">
+                    <div align="center">-->
+        <!--<h3>Ajax File Uploader</h3>-->
+        <form action="processupload.php" method="post" enctype="multipart/form-data" id="MyUploadForm">
+            <input name="FileInput" id="FileInput" type="file" />
+            <input type="submit"  id="submit-btn" value="Upload" />
+            <img src="images/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
 
-        <div id="upload-wrapper">
-            <div align="center">
-                <h3>Ajax File Uploader</h3>
-                <form action="processupload.php" method="post" enctype="multipart/form-data" id="MyUploadForm">
-                    <input name="FileInput" id="FileInput" type="file" />
-                    <input type="submit"  id="submit-btn" value="Upload" />
-                    <img src="images/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
-
-                </form>
-                <div id="progressbox" ><div id="progressbar"></div ><div id="statustxt">0%</div></div>
-                <div id="filnamn"></div>
-            </div>
-        </div>
+        </form>
+        <div id="progressbox" ><div id="progressbar"></div ><div id="statustxt">0%</div></div>
+       
+        <!--            </div>
+                </div>-->
 
 
         <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
@@ -39,5 +40,6 @@
         <script src="uploadfile.js"></script>
     </body>
 </html>
-
-
+<?php
+//var_dump($_GET["filnamn"]);
+?>
