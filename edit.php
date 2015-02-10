@@ -26,11 +26,7 @@
             echo $info["rubrik"] . "<br>";
             echo $info["flode"] . "<br>";
             echo $info["tid"] . "<br>";
-//            echo $info["filnamn"] . "<br>";
-//                header("Location: index.php");
-            echo "<form method='GET'>";
-            echo "<input type='hidden' value='" . $info["id"] . "' name='id'>";
-            echo "</form>";
+            echo $info["filnamn"] . "<br>";
         }
 
         echo "<form method='GET' action='editsave.php'>";
@@ -39,19 +35,18 @@
         echo "<br><br>";
         echo "<textarea name='flode'required>" . $info['flode'] . "</textarea>";
         echo "<br>";
-        echo "<input type='submit' name='action' value='Save'>";
+        echo "<p id='filnamnVisa'></p>";
+        echo "<input type='submit' name='action' value='Save'>" . "<br>";
+        echo "<input type='hidden' name='filnamn' value='" . $info['filnamn'] . "' id='filnamn'>";
         echo "</form>";
-
-        echo "<a href='index.php'>Uppdatera Resultat</a>";
         ?>
-        
+
         <form action="processupload.php" method="post" enctype="multipart/form-data" id="MyUploadForm">
             <input name="FileInput" id="FileInput" type="file" />
             <input type="submit"  id="submit-btn" value="Upload" />
             <img src="images/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>
 
         </form>
-        <div id="progressbox" ><div id="progressbar"></div ><div id="statustxt">0%</div></div>
 
         <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="js/jquery.form.min.js"></script>

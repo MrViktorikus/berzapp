@@ -38,7 +38,7 @@ if (isset($_FILES["FileInput"]) && $_FILES["FileInput"]["error"] == UPLOAD_ERR_O
         case 'video/mp4':
             break;
         default:
-            die('Unsupported File!'); //output error
+            die('Unsupported File!' + $_FILES['FileInput']['type']); //output error
     }
 
     $File_Name = strtolower($_FILES['FileInput']['name']);
@@ -47,22 +47,10 @@ if (isset($_FILES["FileInput"]) && $_FILES["FileInput"]["error"] == UPLOAD_ERR_O
     $NewFileName = $Random_Number . $File_Ext; //new file name
 
     if (move_uploaded_file($_FILES['FileInput']['tmp_name'], $UploadDirectory . $NewFileName)) {
-        
-//        if(isset($_GET["action"])){
-//            if($_GET["action"] == "Ladda Upp"){
-//                $laggtilfil = "INSERT INTO nyhet (filnamn) VALUES ('" . $ . "')";
-//            }
-//        }
-        
-        echo "<form method='GET'>";
-        echo "<input type='text' name='filnamn' value='" . $NewFileName . "'>";
-        echo "<input type='submit' name='action' value='Ladda Upp'";
-        echo "</form>";
         die($NewFileName);
     } else {
         die('error uploading File!');
     }
 } else {
-    die('Something wrong with upload! Is "upload_max_filesize" set correctly?');
+    die(var_dump($_FILES["FileInput"] . " did not upload."));
 }
-echo "<input type='text' name='filnamn' value='" . $NewFileName . "'>";
