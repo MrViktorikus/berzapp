@@ -1,0 +1,23 @@
+body{
+    background-color: brown;
+    margin: 0 auto;
+}
+.bob{
+    margin-top: 10px;
+    padding: 20px;
+    background-color: yellowgreen;
+    float: left;
+}
+.nils{
+    padding: 20px;
+    margin-top: 10px;
+    background-color: plum;
+    float: left;
+}
+button{
+    background-color: beige;
+    border: 0;
+}
+h1{
+    font-size: 20px;
+}
