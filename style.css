@@ -2,13 +2,14 @@ body{
     background-color: brown;
     margin: 0 auto;
 }
-.bob{
+#wrapper{
     margin-top: 10px;
     padding: 20px;
     background-color: yellowgreen;
     width: 400px;
+    overflow:auto;
 }
-.nils{
+.content{
     padding: 20px;
     margin-top: 10px;
     background-color: plum;

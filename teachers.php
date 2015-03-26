@@ -7,12 +7,13 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>LÃ¤rarinformation</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
     </head>
     <body>
-        <div>TODO write content</div>
+        <div></div>
+        <h2>LÃ¤rarinformation</h2>
     </body>
 </html>
 <?php
@@ -58,7 +59,7 @@ $berzelius = file_get_contents('http://www.linkoping.se/Skola-barnomsorg/Gymnasi
 //////for($i = 0; $i<7; $i++){
 ////    echo "Nyhet: " . $berzelius[2][$i;
 ////}
-////$länk = array();
+////$lï¿½nk = array();
 //var_dump($output_array);
 //$utdata= array();
 //
@@ -74,7 +75,7 @@ $berzelius = file_get_contents('http://www.linkoping.se/Skola-barnomsorg/Gymnasi
 //    $i++;
 //}
 //for($i = 0; $i<count($nyhet); $i++){
-//    echo "Lärare $nyhet[$i] email: $utdata[$i]<br>\n";
+//    echo "Lï¿½rare $nyhet[$i] email: $utdata[$i]<br>\n";
 //}
 
 preg_match_all("/(<td>.+<\/td>[^<]+){5}/", $berzelius, $fullInfo, PREG_PATTERN_ORDER);
@@ -86,19 +87,19 @@ foreach ($fullInfo[0] as $value) {
 $battre = array();
 $i = 0;
 foreach ($fullInfo[0] as $value){
-    $value = preg_replace("/[a-ö]{6}@linkoping.se/","",$value);
+    $value = preg_replace("/[a-ï¿½]{6}@linkoping.se/","",$value);
     $value = str_replace("&nbsp;"," ", $value);
     $value = strip_tags($value);
     $namn = array();
-    preg_match("/([A-Ö][a-ö]+[\s,^\n])+/", $value, $namn);
+    preg_match("/([A-ï¿½][a-ï¿½]+[\s,^\n])+/", $value, $namn);
     $value = substr($value, strlen($namn[0]), strlen($value));
     $battre[$i]["name"] = $namn[0];
     $forkort = array();
-    preg_match("/\s([a-ö]{5})\s/", $value, $forkort);
+    preg_match("/\s([a-ï¿½]{5})\s/", $value, $forkort);
     $subj = array();
-    preg_match("/\s([A-Ö][a-ö]+(,\s[A-Ö][a-ö]+)*)\s/", $value, $subj);
+    preg_match("/\s([A-ï¿½][a-ï¿½]+(,\s[A-ï¿½][a-ï¿½]+)*)\s/", $value, $subj);
     $class = array();
-    if(preg_match("/\s([A-Ö]{2}[0-9]{2}[A-Ö])\s/", $value, $class)){
+    if(preg_match("/\s([A-ï¿½]{2}[0-9]{2}[A-ï¿½])\s/", $value, $class)){
         $battre[$i]["class"] = $class[1];
     }
     else{
@@ -118,13 +119,12 @@ foreach ($fullInfo[0] as $value){
 //        echo $lar . "<br>";
 ////        $larare = $larare . $lar . " ";
 //    }
-//    echo "$namn[0]"; //ger hela namnet (dock ej åäö och grejer) utan mellanslag efter! :)
+//    echo "$namn[0]"; //ger hela namnet (dock ej ï¿½ï¿½ï¿½ och grejer) utan mellanslag efter! :)
     
     $battre[$i]["short"] = $forkort[1];
     $battre[$i]["subject"] = $subj[1];
     $i++;
 }
-var_dump($battre);
 
 //echo $berzelius[1][1] . " bladkfj " . $berzelius[2][1]. "\n";
 //echo $berzelius[1][2] . " bladkfj " . $berzelius[2][2]. "\n";

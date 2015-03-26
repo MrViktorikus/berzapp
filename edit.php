@@ -9,13 +9,9 @@
     <body>
         <?php
         include "db.php";
-
-        $sql = "SELECT * FROM nyhet WHERE id='" . $_GET["id"] . "'";
-        $stmt = $dbm->prepare($sql);
-        $stmt->bindParam(":flode", $flode);
-        $stmt->execute();
-        $infos = $stmt->fetchAll();
+        include "getData.php";
         echo "infos:";
+
         var_dump($infos);
         echo "<br>";
         echo "get";
