@@ -1,0 +1,32 @@
+body{
+    background-color: brown;
+    margin: 0 auto;
+}
+.bob{
+    margin-top: 10px;
+    padding: 20px;
+    background-color: yellowgreen;
+    width: 400px;
+}
+.nils{
+    padding: 20px;
+    margin-top: 10px;
+    background-color: plum;
+    float: left;
+    width: 350px;
+}
+button{
+    background-color: beige;
+    border: 0;
+}
+h1{
+    font-size: 20px;
+}
+input{
+    border-style: none;
+    background-color: #8BC34A;
+    color: black;
+    padding: 5px;
+    border-radius: 100%;
+    margin-bottom: 5px;
+}
