@@ -13,8 +13,9 @@
             <br><br>
             <textarea name='input' required></textarea>
             <br>
-            <input type='submit' name='action' value='add'>
             <p id='filnamnVisa'></p>
+            <input type='submit' name='action' value='add'>
+            <br><br>
             <input type='hidden' name='filnamn' value='' id='filnamn'>
         </form>
 
